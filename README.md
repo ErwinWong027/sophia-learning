@@ -53,6 +53,6 @@ curl -X POST http://127.0.0.1:8000/agent/run \
 
 支持 `goto`、`click`、`double_click`、`fill`、`type`、`press`、`hover`、`check`、`uncheck`、`select`、`wait_for`、`wait`、`extract_text`、`extract_attribute`、`extract_sophia_question` 和 `screenshot`。
 
-`extract_sophia_question` 会返回当前 Sophia 题目的 URL、题干和全部选项。题目选择可使用 `click` 操作点击 `#answer-0` 至 `#answer-3`；提交属于计分操作，应在用户确认后执行。
+`extract_sophia_question` 会返回当前 Sophia 的 URL、题干和全部选项。题目选择可使用 `click` 操作点击 `#answer-0` 至 `#answer-3`
 
 默认登录目录为 `./browser_profiles/sophia`，该目录已被 Git 忽略。当前控制层支持页面读取、截图与用户确认后的点选，不包含自动代答计分测验。

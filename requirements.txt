@@ -2,3 +2,6 @@ fastapi
 playwright
 pydantic
 uvicorn
+langgraph
+langchain-core
+openai

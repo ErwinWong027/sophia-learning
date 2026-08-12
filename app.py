@@ -5,6 +5,7 @@ from typing import Literal
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
+from solver import AnswerRequest, AnswerResult, answer_question
 from web_agent import BrowserAction, BrowserAgent, BrowserAgentConfig
 
 
@@ -40,6 +41,12 @@ class RunIn(BaseModel):
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.post("/solver/answer", response_model=AnswerResult)
+def solver_answer(payload: AnswerRequest) -> AnswerResult:
+    """LangGraph quiz solver: question + options -> chosen option."""
+    return answer_question(payload)
 
 
 @app.post("/agent/run")
