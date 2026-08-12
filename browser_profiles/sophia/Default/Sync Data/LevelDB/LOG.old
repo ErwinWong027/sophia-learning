@@ -1,2 +1,3 @@
-2026/08/06-20:03:36.975 f7b1e Creating DB /Users/erwinwong/Documents/autoclass/browser_profiles/sophia/Default/Sync Data/LevelDB since it was missing.
-2026/08/06-20:03:36.986 f7b1e Reusing MANIFEST /Users/erwinwong/Documents/autoclass/browser_profiles/sophia/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/08/12-17:19:01.707 597a05 Reusing MANIFEST /Users/zihan.wang/Desktop/sophia-learning/browser_profiles/sophia/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/08/12-17:19:01.730 597a05 Recovering log #3
+2026/08/12-17:19:01.731 597a05 Reusing old log /Users/zihan.wang/Desktop/sophia-learning/browser_profiles/sophia/Default/Sync Data/LevelDB/000003.log 
