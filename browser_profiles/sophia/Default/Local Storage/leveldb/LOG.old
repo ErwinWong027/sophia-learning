@@ -1,3 +1,6 @@
-2026/08/12-17:23:23.518 59932a Reusing MANIFEST /Users/zihan.wang/Desktop/sophia-learning/browser_profiles/sophia/Default/Local Storage/leveldb/MANIFEST-000001
-2026/08/12-17:23:23.521 59932a Recovering log #4
-2026/08/12-17:23:23.522 59932a Reusing old log /Users/zihan.wang/Desktop/sophia-learning/browser_profiles/sophia/Default/Local Storage/leveldb/000004.log 
+2026/08/13-23:10:03.792 7be311 Reusing MANIFEST /Users/zihan.wang/Desktop/sophia-learning/browser_profiles/sophia/Default/Local Storage/leveldb/MANIFEST-000001
+2026/08/13-23:10:03.795 7be311 Recovering log #26
+2026/08/13-23:10:03.796 7be311 Reusing old log /Users/zihan.wang/Desktop/sophia-learning/browser_profiles/sophia/Default/Local Storage/leveldb/000026.log 
+2026/08/13-23:22:06.692 7be314 Level-0 table #30: started
+2026/08/13-23:22:06.696 7be314 Level-0 table #30: 12944 bytes OK
+2026/08/13-23:22:06.699 7be314 Delete type=0 #26
