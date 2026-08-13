@@ -216,12 +216,57 @@ class BrowserAgent:
         if operation == "extract_sophia_question":
             question = page.locator(".question-slide .challenge-v2-question__text").first
             question.wait_for(state="visible", timeout=timeout)
-            option_labels = page.locator(".question-slide .challenge-v2-answer__input")
-            options = [option_labels.nth(index).inner_text().strip() for index in range(option_labels.count())]
+            data = page.evaluate("""() => {
+                const extractWithAlt = (el) => {
+                    if (!el) return '';
+                    const clone = el.cloneNode(true);
+                    clone.querySelectorAll('img[alt]').forEach(img => {
+                        const alt = img.alt.trim();
+                        if (alt) img.replaceWith(document.createTextNode(alt));
+                        else img.remove();
+                    });
+                    return clone.innerText.replace(/\\s+/g, ' ').trim();
+                };
+                const slide = document.querySelector('.question-slide');
+                // 题干：整个 question-slide 去掉选项/按钮/弹窗区，这样图片块（如 .quiz-zoom-image）也能被捕获
+                let question = '';
+                if (slide) {
+                    const slideClone = slide.cloneNode(true);
+                    slideClone.querySelectorAll(
+                        '.challenge-v2-answer__input, .challenge-v2-answer, button, nav, input, textarea, select, form, '
+                        + '[role=dialog], [role=tooltip], [class*=modal], [class*=dialog], [class*=popover], [class*=tooltip], '
+                        + '[class*=report], [class*=feedback], [class*=footer], [class*=controls], [class*=progress]'
+                    ).forEach(el => el.remove());
+                    question = extractWithAlt(slideClone);
+                }
+                if (!question) {
+                    question = extractWithAlt(document.querySelector('.question-slide .challenge-v2-question__text'));
+                }
+                // 防御：截断可能残留的反馈弹窗文案
+                for (const marker of ['Report an issue', 'Notice something confusing']) {
+                    const i = question.indexOf(marker);
+                    if (i > 0) question = question.slice(0, i).trim();
+                }
+                const labels = document.querySelectorAll('.question-slide .challenge-v2-answer__input');
+                const options = Array.from(labels).map(label => {
+                    const textDiv = label.querySelector('.challenge-v2-answer__text');
+                    if (!textDiv) return extractWithAlt(label);
+                    const clone = textDiv.cloneNode(true);
+                    clone.querySelectorAll('span.letter').forEach(el => el.remove());
+                    clone.querySelectorAll('img[alt]').forEach(img => {
+                        const alt = img.alt.trim();
+                        if (alt) img.replaceWith(document.createTextNode(alt));
+                        else img.remove();
+                    });
+                    const text = clone.innerText.replace(/\\s+/g, ' ').trim();
+                    return text || extractWithAlt(label);
+                });
+                return { question, options };
+            }""")
             return {
                 "url": page.url,
-                "question": question.inner_text().strip(),
-                "options": options,
+                "question": data.get("question", ""),
+                "options": data.get("options", []),
             }
         if operation == "screenshot":
             output = Path(action.value).expanduser().resolve()
