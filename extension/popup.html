@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Sophia 题目助手</h1>
+
+  <div class="actions">
+    <button id="btn-extract" class="primary">📋 提取题目到剪贴板</button>
+    <button id="btn-ask">🤖 粘贴发给 AI</button>
+  </div>
+
+  <div id="status" class="status hidden"></div>
+
+  <div id="result" class="result hidden">
+    <div class="result-head">
+      <div id="answer-line" class="answer-line"></div>
+      <button id="btn-copy-result" class="mini">复制结果</button>
+    </div>
+    <div id="answer-text" class="answer-text"></div>
+    <div id="rationale" class="rationale"></div>
+  </div>
+
+  <details class="settings">
+    <summary>⚙️ 设置</summary>
+    <label>API Key
+      <input type="password" id="api-key" placeholder="填写后自动保存">
+    </label>
+    <label>Base URL
+      <input type="text" id="base-url" spellcheck="false">
+    </label>
+    <label>模型
+      <input type="text" id="model" spellcheck="false">
+    </label>
+  </details>
+
+  <script src="popup.js"></script>
+</body>
+</html>

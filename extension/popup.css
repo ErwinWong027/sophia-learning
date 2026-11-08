@@ -1,0 +1,143 @@
+body {
+  width: 360px;
+  margin: 0;
+  padding: 12px 14px;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  color: #1f2430;
+  background: #fafbfc;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button {
+  padding: 10px 12px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button:hover:not(:disabled) {
+  background: #f0f4ff;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+button.primary {
+  background: #3864f4;
+  border-color: #3864f4;
+  color: #fff;
+}
+
+button.primary:hover:not(:disabled) {
+  background: #2b52d8;
+}
+
+.hidden {
+  display: none;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #eef2ff;
+  color: #344054;
+  word-break: break-word;
+}
+
+.status.error {
+  background: #fef0f0;
+  color: #c0392b;
+}
+
+.status.ok {
+  background: #ecf9f0;
+  color: #1e7e46;
+}
+
+.result {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #d8e0f5;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+button.mini {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.answer-line {
+  font-weight: 700;
+  font-size: 14px;
+  color: #1e7e46;
+}
+
+.answer-text {
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.rationale {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed #e4e7ec;
+  color: #667085;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.settings {
+  margin-top: 12px;
+}
+
+.settings summary {
+  cursor: pointer;
+  color: #475467;
+  user-select: none;
+}
+
+.settings label {
+  display: block;
+  margin-top: 8px;
+  color: #475467;
+}
+
+.settings input {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 12px;
+}

@@ -4,11 +4,33 @@
 
 ## 安装与启动
 
+克隆后一键初始化(自动检查 Python、创建虚拟环境、安装全部依赖、下载匹配的 Chromium,并自动从 `.env.example` 生成 `.env`):
+
+- **macOS / Linux**:
+
+```bash
+./setup.sh
+source .venv/bin/activate
+```
+
+- **Windows**: 直接双击 `setup.bat`(或在 CMD 中运行),完成后用 `.venv\Scripts\activate` 激活。前提是已安装 Python 3.9+ 且安装时勾选了 Add python.exe to PATH。
+
+脚本末尾会自动做 Chromium 启动自检,全部通过后即可运行。若使用 LLM 模式,需先在 `.env` 中填入自己的 `OPENAI_API_KEY`(模板见 `.env.example`,`.env` 已被 Git 忽略,切勿提交真实密钥)。
+
+或手动执行:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python -m playwright install chromium
+```
+
+注意:Playwright 的浏览器二进制不进 git,每台机器首次使用时都需执行 `python -m playwright install chromium` 联网下载一次。依赖已锁定 `playwright==1.60.0`,请勿随意升级,否则本地浏览器版本可能不匹配。
+
+启动服务:
+
+```bash
 uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 

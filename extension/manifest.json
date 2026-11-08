@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Sophia 题目助手",
+  "version": "1.0.0",
+  "description": "提取当前 Sophia 页面的题目到剪贴板，或把剪贴板里的题目粘贴发给 AI 获取答案",
+  "permissions": ["activeTab", "storage", "clipboardWrite", "clipboardRead"],
+  "host_permissions": [
+    "https://app.sophia.org/*",
+    "https://api-gateway.openagents.org/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Sophia 题目助手"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://app.sophia.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
